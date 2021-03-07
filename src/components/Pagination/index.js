@@ -1,4 +1,4 @@
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 import dayjs from 'dayjs';
 
 
@@ -27,7 +27,9 @@ export default {
             return `${this.buttonsClass}__previousButton`;
         },
         selectedMonthYear() {
-            return dayjs(`${this.year}-${this.month}-1`, "YYYY-M-D").format('MMMM YYYY');
+            const getMonthYear = `${this.year}${this.month}`;
+            const formatMonthYear = dayjs(getMonthYear).format('MMMM YYYY');
+            return formatMonthYear;
         },
         contentClass() {
             return `${this.className}__content`;
@@ -44,7 +46,7 @@ export default {
             } else {
                 this.$store.commit('setCurrentMonth', this.month - 1);
             }
-            this.$store.commit('eventFormActive',false);
+            this.$store.commit('eventFormActive', false);
         },
         next() {
             if (this.month === 12) {
@@ -53,7 +55,7 @@ export default {
             } else {
                 this.$store.commit('setCurrentMonth', this.month + 1);
             }
-            this.$store.commit('eventFormActive',false);
+            this.$store.commit('eventFormActive', false);
         },
         current() {
             this.$store.commit('setCurrentYear', dayjs().year());

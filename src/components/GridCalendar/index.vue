@@ -1,9 +1,5 @@
 <template>
-    <div :class="contentClass">
-      <div :class="weekClass" v-for="(week,index) in weeks" :key="index">
-        <CalendarDay v-for="(day,index) in week" :key="index" :day="day"/>
-      </div>
-    </div>
+  <CalendarWeek :class="contentClass" :weeks="weeks"/>
 </template>
 
 <script src="./index.js"/>
