@@ -1,3 +1,5 @@
+import {mapGetters} from "vuex";
+
 export default {
     data() {
         return {
@@ -6,6 +8,12 @@ export default {
         }
     },
     computed: {
+        ...mapGetters({
+            eventModalPositionX: "getEventModalPositionX",
+            eventModalPositionY: "getEventModalPositionY",
+            eventFormDate: "getEventFormDate",
+            eventModalActive: "getEventModalActive",
+        }),
         modalClass() {
             return `${this.className}__modal`;
         },
@@ -18,20 +26,20 @@ export default {
         inputClass() {
             return `${this.className}__input-modal`;
         },
-        items() {
+        itemsClass() {
             return `${this.className}__items`;
         },
         top() {
-            return `${this.$store.state.eventModalPositionY}px`;
+            return `${this.eventModalPositionY}px`;
         },
         left() {
-            return `${this.$store.state.eventModalPositionX}px`;
+            return `${this.eventModalPositionX}px`;
         },
         active() {
-            return this.$store.state.eventModalActive;
+            return this.eventModalActive;
         },
         date() {
-            return this.$store.state.eventFormDate;
+            return this.eventFormDate;
         }
     },
     methods: {

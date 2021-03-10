@@ -1,6 +1,6 @@
 import { mapGetters } from "vuex";
 import dayjs from "dayjs";
-import CalendarDay from '../CalendarDay/index.vue';
+import CalendarWeek from '../CalendarWeek/index.vue';
 
 export default {
     name: 'GridCalendar',
@@ -10,7 +10,7 @@ export default {
         }
     },
     components: {
-        CalendarDay,
+        CalendarWeek,
     },
     computed: {
         ...mapGetters({
@@ -19,9 +19,6 @@ export default {
         }),
         contentClass() {
             return `${this.className}__content`;
-        },
-        weekClass() {
-            return `${this.className}__calendar-week`;
         },
         days() {
             let days = [];
@@ -46,7 +43,6 @@ export default {
             // get the last day
             currentDay = dayjs(days[days.length - 1]);
             //add days to final
-            //TODO should not return the lastWeek in February --fixed
             if (currentDay.day() !== SUNDAY) {
                 do {
                     currentDay = dayjs(currentDay).add(1, "days");

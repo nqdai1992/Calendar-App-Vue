@@ -1,4 +1,5 @@
 .event {
+
   &__modal {
     display: none;
     box-shadow: 0 2px 4px #30A9ED;
@@ -11,66 +12,69 @@
     flex-direction: column;
     align-content: space-between;
     align-items: flex-start;
+    //@media only screen (min-width:768 px) {
+    //  background-color:red;
+    //}
   }
 
-  &__modal.active {
-    display: flex;
-  }
+    &__modal.active {
+      display: flex;
+    }
 
-  &__close-button {
-    margin: 0;
-    padding: 0;
-    font-size: 1.25rem;
-    background-color: #fff;
-    position: absolute;
-    border: none;
-    width: 20px;
-    font-weight: 700;
-    color: #666;
-    right: .6rem;
-    top: .6rem;
-    cursor: pointer;
-  }
+    &__close-button {
+      margin: 0;
+      padding: 0;
+      font-size: 1.25rem;
+      background-color: #fff;
+      position: absolute;
+      border: none;
+      width: 20px;
+      font-weight: 700;
+      color: #666;
+      right: .6rem;
+      top: .6rem;
+      cursor: pointer;
+    }
 
-  &__create-button {
-    text-align: right;
-    width: 100%;
-  }
+    &__create-button {
+      text-align: right;
+      width: 100%;
+    }
 
-  &__create-button button {
-    padding: .5rem;
-    background-color: #30A9ED;
-    border: 1px solid #2c3c4e;
-    font-weight: 700;
-    border-radius: 2px;
-    color: #fff;
-  }
+    &__create-button button {
+      padding: .5rem;
+      background-color: #30A9ED;
+      border: 1px solid #2c3c4e;
+      font-weight: 700;
+      border-radius: 2px;
+      color: #fff;
+    }
 
-  &__input-modal {
-    margin-bottom: 0.75rem;
-    width: 100%;
+    &__input-modal {
+      margin-bottom: 0.75rem;
+      width: 100%;
 
-    input[type='text'] {
-      width: calc(100% - 0.75rem);
-      padding: 0.25rem;
-      font-size: 0.75rem;
+      input[type='text'] {
+        width: calc(100% - 0.75rem);
+        padding: 0.25rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    &__items {
+      width: 100%;
+      text-align: left;
+    }
+
+    &__items h4 {
+      margin: 0 0 .75rem;
+      color: #999;
+      font-weight: 400;
+      font-size: 1.15rem;
+    }
+
+    &__items p {
+      font-size: .85rem;
+      margin: 0 0 .85rem;
     }
   }
-
-  &__items {
-    width: 100%;
-    text-align: left;
-  }
-
-  &__items h4 {
-    margin: 0 0 .75rem;
-    color: #999;
-    font-weight: 400;
-    font-size: 1.15rem;
-  }
-
-  &__items p {
-    font-size: .85rem;
-    margin: 0 0 .85rem;
-  }
-}

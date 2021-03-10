@@ -24,7 +24,7 @@ export default {
             }
         },
         events() {
-            return this.$store.state.events.filter(event  => event.date.isSame(this.day, 'day'));
+            return this.$store.state.events.filter(event => event.date.isSame(this.day, 'day'));
         }
     },
     methods: {

@@ -27,7 +27,20 @@ export const store = new Vuex.Store({
         getCurrentMonth(state) {
             return state.currentMonth;
         },
-    },
+        getEventModalPositionX(state) {
+            return state.eventModalPositionX;
+        },
+        getEventModalPositionY(state) {
+            return state.eventModalPositionY;
+        },
+        getEventFormDate(state) {
+            return state.eventFormDate;
+        },
+        getEventModalActive(state) {
+            return state.eventModalActive;
+        },
+    }
+    ,
     mutations: {
         setCurrentMonth(state, payload) { // payload will be be any data that the component wants to send
             state.currentMonth = payload;
@@ -42,8 +55,13 @@ export const store = new Vuex.Store({
         eventFormActive(state, payload) {
             state.eventModalActive = payload;
         },
-        addEvent(state, payload) {
-            state.events.push(payload);
+        addEvent(state,payload) {
+            let items = {
+                description:payload,
+                date: state.eventFormDate
+            };
+            state.events.push(items);
+            Axios.post('/add_event',items);
         },
         eventFormDate(state, payload) {
             state.eventFormDate = payload;

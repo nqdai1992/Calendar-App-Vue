@@ -13,8 +13,8 @@ export default {
             return `${this.className}__list`;
         },
         weekdays() {
-            const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-            return WEEKDAYS;
+            const daysOfTheWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+            return daysOfTheWeek;
         },
     },
 };
