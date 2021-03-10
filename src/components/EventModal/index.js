@@ -40,10 +40,11 @@ export default {
         },
         create() {
             if(this.description != "") {
-                this.$store.commit('addEvent', this.description);
-                this.description = '';
-                this.$store.commit('eventFormActive', false);
+                this.$store.dispatch('addEvent', this.description).then(()=> {
+                    this.description = '';
+                    this.$store.commit('eventFormActive', false);
+                });
             }
-        }
+        },
     }
 }
