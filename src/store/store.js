@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import dayjs from 'dayjs';
-import Axios from 'axios';
+import axios from 'axios';
+
+const httpClient = axios.create({
+    baseURL: 'http://localhost:3000'
+  });
 
 Vue.use(Vuex);
 
@@ -61,7 +65,6 @@ export const store = new Vuex.Store({
                 date: state.eventFormDate
             };
             state.events.push(items);
-            Axios.post('/add_event',items);
         },
         eventFormDate(state, payload) {
             state.eventFormDate = payload;
@@ -74,7 +77,7 @@ export const store = new Vuex.Store({
                     description: payload,
                     date: context.state.eventFormDate
                 };
-                Axios.post('/add_event', items).then((response) => {
+                httpClient.post('/add_event', items).then((response) => {
                     if(response.status === 200) {
                         context.commit('addEvent', items);
                         resolve();
