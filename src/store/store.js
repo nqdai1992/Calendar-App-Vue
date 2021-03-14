@@ -8,9 +8,9 @@ const httpClient = axios.create({
   });
 
 Vue.use(Vuex);
-
 let currentYear = dayjs().year();
 let currentMonth = dayjs().month() + 1;
+
 window.dayjs = dayjs;
 export const store = new Vuex.Store({
     state: {
@@ -42,7 +42,7 @@ export const store = new Vuex.Store({
         },
         getEventModalActive(state) {
             return state.eventModalActive;
-        },
+        }
     }
     ,
     mutations: {
@@ -60,14 +60,13 @@ export const store = new Vuex.Store({
             state.eventModalActive = payload;
         },
         addEvent(state,payload) {
-            let items = {
-                description:payload,
-                date: state.eventFormDate
-            };
-            state.events.push(items);
+            state.events.push(payload);
         },
         eventFormDate(state, payload) {
             state.eventFormDate = payload;
+        },
+        resetEvent(state) {
+            state.events = []
         }
     },
     actions: {
@@ -86,6 +85,15 @@ export const store = new Vuex.Store({
                     }
                 });
             });
+        },
+        async getEvent (context, payload) {
+            const { data } = await httpClient.get(`/get_event/${payload}`)
+            context.commit('resetEvent')
+            data.map(e =>({
+                ...e,
+                date: dayjs(e.date)
+            })).forEach(e => context.commit('addEvent', e))
+            return data
         }
     }
 })

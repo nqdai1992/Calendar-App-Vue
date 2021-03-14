@@ -65,4 +65,18 @@ export default {
             return weeks;
         },
     },
+    methods: {
+        fetchEvent () {
+            const currentDay = dayjs(`${this.year}-${this.month}-1`, "YYYY-M-D")
+            this.$store.dispatch('getEvent', currentDay.unix())
+        }
+    },
+    watch: {
+        month: {
+            handler () {
+                this.fetchEvent()
+            },
+            immediate: true
+        }
+    }
 };

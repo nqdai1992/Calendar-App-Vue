@@ -24,6 +24,7 @@ export default {
             }
         },
         events() {
+            console.log(this.$store.state.events)
             return this.$store.state.events.filter(event => event.date.isSame(this.day, 'day'));
         }
     },
@@ -33,5 +34,5 @@ export default {
             this.$store.commit('eventFormActive', true);
             this.$store.commit('eventFormDate', this.day);
         }
-    }
+    },
 };
